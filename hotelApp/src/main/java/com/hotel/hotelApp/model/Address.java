@@ -1,4 +1,4 @@
-package com.hotel.hotelApp.model.entity;
+package com.hotel.hotelApp.model;
 
 import jakarta.persistence.Embeddable;
 import lombok.*;
@@ -8,7 +8,7 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-class Address {
+public class Address {
     private int houseNumber;
     private String street;
     private String city;

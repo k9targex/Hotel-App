@@ -1,5 +1,9 @@
 package com.hotel.hotelApp.model.entity;
 
+
+import com.hotel.hotelApp.model.ArrivalTime;
+import com.hotel.hotelApp.model.Contacts;
+import com.hotel.hotelApp.model.Address;
 import jakarta.persistence.*;
 import lombok.*;
 import java.util.List;
