@@ -1,4 +1,4 @@
-package com.hotel.hotelApp.model.dto;
+package com.hotel.app.model.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;

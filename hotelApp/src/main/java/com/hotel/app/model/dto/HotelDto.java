@@ -1,6 +1,5 @@
-package com.hotel.hotelApp.model.dto;
+package com.hotel.app.model.dto;
 
-import jakarta.persistence.Column;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;

@@ -1,4 +1,4 @@
-package com.hotel.hotelApp.exception.exceptions;
+package com.hotel.app.exception.exceptions;
 
 public class HotelNotFoundException extends RuntimeException {
     public HotelNotFoundException (String message){

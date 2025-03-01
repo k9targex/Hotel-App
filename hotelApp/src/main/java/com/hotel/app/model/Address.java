@@ -1,4 +1,4 @@
-package com.hotel.hotelApp.model;
+package com.hotel.app.model;
 
 import jakarta.persistence.Embeddable;
 import lombok.*;

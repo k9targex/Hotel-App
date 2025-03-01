@@ -1,11 +1,13 @@
-package com.hotel.hotelApp.service;
+package com.hotel.app.service;
 
-import com.hotel.hotelApp.dao.HotelRepository;
-import com.hotel.hotelApp.exception.exceptions.HotelNotFoundException;
-import com.hotel.hotelApp.model.Address;
-import com.hotel.hotelApp.model.dto.HotelDto;
-import com.hotel.hotelApp.model.entity.Hotel;
+import com.hotel.app.dao.HotelRepository;
+import com.hotel.app.exception.exceptions.HotelNotFoundException;
+import com.hotel.app.model.Address;
+import com.hotel.app.model.dto.HotelDto;
+import com.hotel.app.model.entity.Hotel;
+import com.hotel.app.specification.HotelSpecification;
 import lombok.AllArgsConstructor;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,6 +22,14 @@ public class HotelService {
         return hotelRepository.findById(hotelId).
                 orElseThrow(() -> new HotelNotFoundException("Hotel doesn't exist."));
     }
+
+    public List<HotelDto> getFilteredHotels(String name, String brand, String city, String country, List<String> amenities) {
+        Specification<Hotel> spec = HotelSpecification.filterHotels(name, brand, city, country, amenities);
+        return hotelRepository.findAll(spec).stream()
+                .map(this::convertToDto)
+                .toList();
+    }
+
 
     public List<HotelDto> getAllHotels() {
         return hotelRepository.findAll().stream()
@@ -42,4 +52,6 @@ public class HotelService {
                 address.getCity() + ", " + address.getCountry() + " " +
                 address.getPostCode();
     }
+
+
 }

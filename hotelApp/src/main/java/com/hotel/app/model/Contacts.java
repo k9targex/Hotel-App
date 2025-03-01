@@ -1,4 +1,4 @@
-package com.hotel.hotelApp.model;
+package com.hotel.app.model;
 
 import jakarta.persistence.Embeddable;
 import lombok.*;
@@ -8,7 +8,7 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ArrivalTime {
-    private String checkIn;
-    private String checkOut;
+public class Contacts {
+    private String phone;
+    private String email;
 }

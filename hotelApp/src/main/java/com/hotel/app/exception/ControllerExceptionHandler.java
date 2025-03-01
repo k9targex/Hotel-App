@@ -1,8 +1,8 @@
-package com.hotel.hotelApp.exception;
+package com.hotel.app.exception;
 
 
-import com.hotel.hotelApp.exception.exceptions.HotelNotFoundException;
-import com.hotel.hotelApp.model.dto.ResponseError;
+import com.hotel.app.exception.exceptions.HotelNotFoundException;
+import com.hotel.app.model.dto.ResponseError;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
