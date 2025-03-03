@@ -7,6 +7,7 @@ import com.hotel.app.model.Address;
 import jakarta.persistence.*;
 import lombok.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "hotels")
@@ -37,5 +38,5 @@ public class Hotel {
     private ArrivalTime arrivalTime;
 
     @ElementCollection
-    private List<String> amenities;
+    private Set<String> amenities;
 }
