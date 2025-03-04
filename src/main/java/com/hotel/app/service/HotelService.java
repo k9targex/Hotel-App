@@ -140,8 +140,8 @@ public class HotelService {
 
     private String formatAddress(Address address) {
         return address.getHouseNumber() + " " + address.getStreet() + ", " +
-                address.getCity() + ", " + address.getCountry() + " " +
-                address.getPostCode();
+                address.getCity() + ", " +address.getPostCode() +  ", " +
+                address.getCountry();
     }
 
 }
