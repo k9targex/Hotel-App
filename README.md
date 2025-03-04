@@ -1,3 +1,8 @@
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=k9targex_Hotel-App&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=k9targex_Hotel-App)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=k9targex_Hotel-App&metric=bugs)](https://sonarcloud.io/summary/new_code?id=k9targex_Hotel-App)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=k9targex_Hotel-App&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=k9targex_Hotel-App)
+
+
 # Hotel-App
 Technical task for GP Solutions
 
