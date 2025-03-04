@@ -64,7 +64,7 @@ class HotelServiceTest {
         assertEquals(hotel.getId(), dto.getId());
         assertEquals(hotel.getName(), dto.getName());
         assertEquals(hotel.getDescription(), dto.getDescription());
-        assertEquals("1 Street, City, Country 12345", dto.getAddress());
+        assertEquals("1 Street, City, 12345, Country", dto.getAddress());
         assertEquals(hotel.getContacts().getPhone(), dto.getPhone());
     }
 
@@ -141,7 +141,7 @@ class HotelServiceTest {
         assertEquals(hotel.getId(), dto.getId());
         assertEquals(hotel.getName(), dto.getName());
         assertEquals(hotel.getDescription(), dto.getDescription());
-        assertEquals("1 Street, City, Country 12345", dto.getAddress()); // Проверка форматированного адреса
+        assertEquals("1 Street, City, 12345, Country", dto.getAddress()); // Проверка форматированного адреса
         assertEquals(hotel.getContacts().getPhone(), dto.getPhone());
 
         verify(hotelRepository, times(1)).findAll(any(Specification.class));
