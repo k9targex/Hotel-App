@@ -7,7 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+
 public class HotelSpecification {
+
+    private HotelSpecification() {
+        throw new UnsupportedOperationException("Utility class. Do not instantiate.");
+    }
     public static Specification<Hotel> filterHotels(String name, String brand, String city, String country, List<String> amenities) {
         return (root, query, criteriaBuilder) -> {
             List<Predicate> predicates = new ArrayList<>();

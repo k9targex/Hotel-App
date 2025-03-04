@@ -4,7 +4,6 @@ import jakarta.persistence.Embeddable;
 import jakarta.validation.constraints.NotBlank;
 
 import lombok.*;
-import jakarta.validation.constraints.Pattern;
 @Embeddable
 @Getter
 @Setter

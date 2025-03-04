@@ -86,7 +86,7 @@ public class HotelService {
     }
 
     private void validateHotelUniqueness(String name, Address address) {
-        if (hotelRepository.existsByAddressAndName(address,name)) {
+        if (Boolean.TRUE.equals(hotelRepository.existsByAddressAndName(address,name))) {
             throw new HotelAlreadyExistsException(HOTEL_ALREADY_EXIST);
         }
     }

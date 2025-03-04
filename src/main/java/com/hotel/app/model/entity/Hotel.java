@@ -6,7 +6,6 @@ import com.hotel.app.model.Contacts;
 import com.hotel.app.model.Address;
 import jakarta.persistence.*;
 import lombok.*;
-import java.util.List;
 import java.util.Set;
 
 @Entity
