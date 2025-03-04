@@ -6,13 +6,13 @@ import com.hotel.app.model.Contacts;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class HotelCreateDto {
     @NotBlank(message = "Name can not be null!")
     private String name;
@@ -25,7 +25,6 @@ public class HotelCreateDto {
     @Valid
     @NotNull(message = "Address must be entered!")
     private Address address;
-
 
     @Valid
     @NotNull(message = "Contacts must be entered!")

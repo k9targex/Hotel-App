@@ -7,8 +7,10 @@ import lombok.*;
 
 @Embeddable
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Address {
     @NotNull(message = "House number must be entered!")
     private Integer houseNumber;

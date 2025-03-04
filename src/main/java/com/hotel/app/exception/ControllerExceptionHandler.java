@@ -5,6 +5,9 @@ import com.hotel.app.exception.exceptions.HotelAlreadyExistsException;
 import com.hotel.app.exception.exceptions.HotelNotFoundException;
 import com.hotel.app.exception.exceptions.IncorrectParameter;
 import com.hotel.app.model.dto.ResponseError;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
@@ -13,7 +16,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.client.HttpClientErrorException;
-import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.server.ResponseStatusException;
 
 @RestControllerAdvice
@@ -31,6 +33,9 @@ public class ControllerExceptionHandler {
             HotelNotFoundException.class,
             HttpClientErrorException.NotFound.class})
     @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ApiResponse(responseCode = "404", description = "Hotel not found",
+            content = @Content(mediaType = "application/json",
+                    schema = @Schema(implementation = ResponseError.class)))
     public ResponseError handleHotelNotFoundException(RuntimeException ex) {
         String errorMessage = ERROR_404 + ex.getMessage();
         log.error(errorMessage);
@@ -40,6 +45,9 @@ public class ControllerExceptionHandler {
     /** Обработчик исключения HttpRequestMethodNotSupportedException. */
     @ExceptionHandler({HttpRequestMethodNotSupportedException.class})
     @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
+    @ApiResponse(responseCode = "405", description = "Method not supported",
+            content = @Content(mediaType = "application/json",
+                    schema = @Schema(implementation = ResponseError.class)))
     public ResponseError handleMethodNotSupportedException(
             HttpRequestMethodNotSupportedException ex) {
         String errorMessage = ERROR_405 + ex.getMessage();
@@ -51,7 +59,10 @@ public class ControllerExceptionHandler {
     /** Обработчик исключения MissingServletRequestParameterException. */
     @ExceptionHandler({MissingServletRequestParameterException.class, ResponseStatusException.class,IncorrectParameter.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ResponseError handleIllegalArgumentException(RuntimeException ex, WebRequest request) {
+    @ApiResponse(responseCode = "400", description = "Bad request",
+            content = @Content(mediaType = "application/json",
+                    schema = @Schema(implementation = ResponseError.class)))
+    public ResponseError handleIllegalArgumentException(RuntimeException ex) {
         String errorMessage = ERROR_400 + ex.getMessage();
         log.error(errorMessage);
         return new ResponseError(HttpStatus.BAD_REQUEST, ex.getMessage());
@@ -60,7 +71,10 @@ public class ControllerExceptionHandler {
     /** Обработчик исключения HotelAlreadyExistsException. */
     @ExceptionHandler({HotelAlreadyExistsException.class})
     @ResponseStatus(HttpStatus.CONFLICT)
-    public ResponseError handleResponseException(HotelAlreadyExistsException ex, WebRequest request) {
+    @ApiResponse(responseCode = "409", description = "Hotel already exists",
+            content = @Content(mediaType = "application/json",
+                    schema = @Schema(implementation = ResponseError.class)))
+    public ResponseError handleResponseException(HotelAlreadyExistsException ex) {
         String errorMessage = ERROR_409 + ex.getMessage();
         log.error(errorMessage);
         return new ResponseError(HttpStatus.CONFLICT, ex.getMessage());
@@ -69,7 +83,10 @@ public class ControllerExceptionHandler {
     /** Обработчик исключения RuntimeException. */
     @ExceptionHandler({RuntimeException.class})
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public ResponseError handleAllExceptions(RuntimeException ex, WebRequest request) {
+    @ApiResponse(responseCode = "500", description = "Internal server error",
+            content = @Content(mediaType = "application/json",
+                    schema = @Schema(implementation = ResponseError.class)))
+    public ResponseError handleAllExceptions(RuntimeException ex) {
         String errorMessage = ERROR_500 + ex.getMessage();
         log.error(errorMessage);
         return new ResponseError(HttpStatus.INTERNAL_SERVER_ERROR, ex.getMessage());
